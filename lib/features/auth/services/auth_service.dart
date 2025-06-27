@@ -103,7 +103,7 @@ class AuthService {
 
       if (response == true) {
         http.Response userRes = await http.get(
-          Uri.parse('$uri/api/user'), // ✅ Use your actual user info route
+          Uri.parse('$uri/'), 
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
             'x-auth-token': token,
