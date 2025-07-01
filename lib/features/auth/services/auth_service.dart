@@ -1,5 +1,6 @@
 import "dart:convert";
 
+import "package:amazon_new/common/widgets/bottom_bar.dart";
 import "package:amazon_new/constants/error_handling.dart";
 import "package:amazon_new/constants/global_variables.dart";
 import "package:amazon_new/constants/utils.dart";
@@ -71,7 +72,7 @@ class AuthService {
           prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            HomeScreen.routeName,
+            BottomBar.routeName,
             (route) => false,
           );
         },

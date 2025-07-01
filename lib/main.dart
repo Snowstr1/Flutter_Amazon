@@ -1,3 +1,4 @@
+import 'package:amazon_new/common/widgets/bottom_bar.dart';
 import 'package:amazon_new/constants/global_variables.dart';
 import 'package:amazon_new/features/auth/home/screens/home_screen.dart';
 import 'package:amazon_new/features/auth/screens/auth_screen.dart';
@@ -47,7 +48,7 @@ class _MyAppState extends State<MyApp> {
       ),
       onGenerateRoute: generateRoute,
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? const HomeScreen()
+          ? const BottomBar()
           : const AuthScreen(),
     );
   }
