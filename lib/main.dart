@@ -1,6 +1,6 @@
 import 'package:amazon_new/common/widgets/bottom_bar.dart';
 import 'package:amazon_new/constants/global_variables.dart';
-import 'package:amazon_new/features/auth/home/screens/home_screen.dart';
+import 'package:amazon_new/features/admin/screens/admin_screen.dart';
 import 'package:amazon_new/features/auth/screens/auth_screen.dart';
 import 'package:amazon_new/features/auth/services/auth_service.dart';
 import 'package:amazon_new/providers/user_provider.dart';
@@ -36,6 +36,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Amazon Project',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: GlobalVariables.backgroundColor,
         colorScheme: const ColorScheme.light(
@@ -48,7 +49,9 @@ class _MyAppState extends State<MyApp> {
       ),
       onGenerateRoute: generateRoute,
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? const BottomBar()
+          ? Provider.of<UserProvider>(context).user.type == 'user'
+                ? const BottomBar()
+                : const AdminScreen()
           : const AuthScreen(),
     );
   }
