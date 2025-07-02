@@ -4,7 +4,6 @@ import "package:amazon_new/common/widgets/bottom_bar.dart";
 import "package:amazon_new/constants/error_handling.dart";
 import "package:amazon_new/constants/global_variables.dart";
 import "package:amazon_new/constants/utils.dart";
-import "package:amazon_new/features/auth/home/screens/home_screen.dart";
 import "package:amazon_new/models/user.dart";
 import "package:amazon_new/providers/user_provider.dart";
 import "package:flutter/material.dart";
