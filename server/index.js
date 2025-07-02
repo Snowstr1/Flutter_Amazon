@@ -13,6 +13,7 @@ app.use(authRouter);
 app.use(adminRouter);
 app.use(productRouter);
 
+
 mongoose.connect(DB).then(() => {
     console.log('Connection successful');
 }).catch((e) => {
