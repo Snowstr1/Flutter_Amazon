@@ -41,6 +41,9 @@ dependencies:
   carousel_slider: ^5.1.1
   dotted_border: ^2.0.0+2
   file_picker: ^10.2.0
+  cloudinary_public: ^0.23.1
+  json_serializable: ^6.9.5
+  convert: ^3.1.2
 
 dev_dependencies:
   flutter_test:

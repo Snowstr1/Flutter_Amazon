@@ -8,13 +8,12 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
     case AuthScreen.routeName:
       return MaterialPageRoute(builder: (_) => const AuthScreen());
-
     case BottomBar.routeName:
       return MaterialPageRoute(builder: (_) => const BottomBar());
     case HomeScreen.routeName:
       return MaterialPageRoute(builder: (_) => const HomeScreen());
-    case AddProductsScreen.routeName:
-      return MaterialPageRoute(builder: (_) => const AddProductsScreen());
+    case AddProductScreen.routeName:
+      return MaterialPageRoute(builder: (_) => const AddProductScreen());
     default:
       return MaterialPageRoute(
         settings: routeSettings,

@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/auth');
+const adminRouter = require('./routes/admin');
 
 const PORT = 3000;
 const app = express();
@@ -8,6 +9,7 @@ const DB = "mongodb+srv://amarbat1001:mongoDB2025@cluster0.ptulnnl.mongodb.net/?
 
 app.use(express.json());
 app.use(authRouter);
+app.use(adminRouter);
 
 mongoose.connect(DB).then(() => {
     console.log('Connection successful');
