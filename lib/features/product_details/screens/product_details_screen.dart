@@ -1,20 +1,21 @@
+import 'package:amazon_new/common/widgets/custom_button.dart';
+import 'package:amazon_new/common/widgets/stars.dart';
 import 'package:amazon_new/constants/global_variables.dart';
-import 'package:amazon_new/features/home/widgets/address_box.dart';
-import 'package:amazon_new/features/home/widgets/carousel_image.dart';
-import 'package:amazon_new/features/home/widgets/deal_of_the_day.dart';
-import 'package:amazon_new/features/home/widgets/top_categories.dart';
 import 'package:amazon_new/features/search/screens/search_screen.dart';
+import 'package:amazon_new/models/product.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
-  static const String routeName = '/home';
-  const HomeScreen({super.key});
+class DetailsScreen extends StatefulWidget {
+  static const String routeName = '/products-details';
+  final Product product;
+  const DetailsScreen({super.key, required this.product});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<DetailsScreen> createState() => _DetailsScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _DetailsScreenState extends State<DetailsScreen> {
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
   }
@@ -90,13 +91,73 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: const [
-            AddressBox(),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [Text(widget.product.id!), Stars(rating: 4)],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: Text(
+                widget.product.name,
+                style: const TextStyle(fontSize: 15),
+              ),
+            ),
+            CarouselSlider(
+              items: widget.product.images.map((i) {
+                return Builder(
+                  builder: (BuildContext context) =>
+                      Image.network(i, fit: BoxFit.cover, height: 200),
+                );
+              }).toList(),
+              options: CarouselOptions(viewportFraction: 1, height: 300),
+            ),
+            Container(color: Colors.black12, height: 5),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RichText(
+                text: TextSpan(
+                  text: 'Deal Price: ',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: '\$${widget.product.price}',
+                      style: const TextStyle(
+                        fontSize: 22,
+                        color: Colors.red,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(widget.product.description),
+            ),
+            Container(color: Colors.black12, height: 5),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: CustomButton(text: 'Buy Now', onTap: () {}),
+            ),
             SizedBox(height: 10),
-            TopCategories(),
-            SizedBox(height: 10),
-            CarouselImage(),
-            DealOfTheDay(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              child: CustomButton(
+                text: 'Add To Cart',
+                onTap: () {},
+                color: const Color.fromRGBO(254, 216, 19, 1),
+              ),
+            ),
           ],
         ),
       ),
