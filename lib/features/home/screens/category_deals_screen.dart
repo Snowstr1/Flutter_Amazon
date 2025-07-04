@@ -78,7 +78,7 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
                         onTap: () {
                           Navigator.pushNamed(
                             context,
-                            DetailsScreen.routeName,
+                            ProductDetailScreen.routeName,
                             arguments: product,
                           );
                         },
